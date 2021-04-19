@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const fs = require('fs')
 const requireDir = require('require-dir');
 
 const { color } = require('./constants');
@@ -11,21 +12,39 @@ class App {
         this.express = express();
     }
 
-    loadMiddlewares() {
-        this.express.use(cors())
-        this.express.use(bodyParser.json())
+    requireDirectory(path, execute) {
+        const files = fs.readdirSync(`${__dirname}/${path}`)
+    
+        if (LOG_START) console.log(color.BLUE, `\nLoading ${path}`)
+    
+        files.forEach(file => {
+          const fileSplit = file.split('.')
+          const extension = fileSplit[fileSplit.length - 1]
+    
+          if (extension === 'js') {
+            if (LOG_START) console.log(color.GREEN, file)
+    
+            if (execute) require(`${__dirname}/${path}/${file}`)({ app: this.express })
+            else require(`${__dirname}/${path}/${file}`)
+          }
+        })
     }
 
     loadModels() {
 
     }
-
-    loadControllers() {
-        requireDir('../app/controllers');
+    
+    loadMiddlewares() {
+        this.express.use(cors())
+        this.express.use(bodyParser.json())
     }
 
     loadRoutes() {
-        requireDir('../app/routes');
+        this.requireDirectory('routes', true)
+    }
+
+    loadControllers() {
+        this.requireDirectory('controllers')
     }
 
     loadBootstraps() {
@@ -34,8 +53,9 @@ class App {
 
     start() {
         this.loadModels()
-        this.loadControllers()
+        this.loadMiddlewares()
         this.loadRoutes()
+        this.loadControllers()
         this.loadBootstraps()
     }
 }
