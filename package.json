@@ -4,9 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node -r ./dotenv/config app/index.js",
+    "dev": "NODE_ENV=dev nodemon -r ./dotenv/config app/index.js",
+    "debug": "NODE_ENV=debug node inspect -r ./dotenv/config app/index.js",
+    "test": "NODE_ENV=test jest --coverage --setupFiles ./dotenv/config",
+    "test:coverage": "NODE_ENV=test jest --coverage --setupFiles ./dotenv/config",
+    "test:debug": "NODE_ENV=test node inspect -r ./dotenv/config node_modules/.bin/jest --runInBand ./__tests__",
+    "check": "nodemon app/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4",
+    "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
