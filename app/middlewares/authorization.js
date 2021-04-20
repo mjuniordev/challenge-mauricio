@@ -34,6 +34,7 @@ module.exports = (req, res, next) => {
         }
 
         req.userId = decoded.id;
+        req.userCpf = decoded.cpf;
         return next();
     });
 };

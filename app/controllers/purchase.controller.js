@@ -14,12 +14,11 @@ class PurchaseController extends AppController {
 
     async create(req, res, next) {
         try {
-            const { code, price, userCpf } = req.body;
-
-            if (userCpf === '15350946056' ) {
+            if (req.userCpf === '15350946056' ) {
                 req.body.status = 'Aprovado';
             }
 
+            req.body.userCpf = req.userCpf;
             const newPurchase = await purchaseService.insert(req.body);
 
             return res.json({ newPurchase });            

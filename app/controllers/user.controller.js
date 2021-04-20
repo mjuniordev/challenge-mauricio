@@ -53,7 +53,7 @@ class UserController extends AppController {
                 return next(error)
             }
 
-            const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: 86400 });
+            const token = jwt.sign({ id: user._id, cpf: user.cpf }, JWT_SECRET, { expiresIn: 86400 });
             user.password = undefined;
 
             return res.json({ user, token })

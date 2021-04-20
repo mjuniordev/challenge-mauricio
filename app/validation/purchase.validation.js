@@ -10,10 +10,6 @@ module.exports = {
         body('price')
             .isNumeric(),
 
-        body('userCpf')
-            .notEmpty()
-            .isLength({ min: 11, max: 11 }),
-
         requestValidation
     ]
 }
