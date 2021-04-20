@@ -10,6 +10,7 @@ class UserController extends AppController {
         super(userService)
 
         this.create = this.create.bind(this);
+        this.login = this.login.bind(this);
     }
 
     async create(req, res, next) {
@@ -52,7 +53,7 @@ class UserController extends AppController {
                 return next(error)
             }
 
-            const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: 86400 });
+            const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: 86400 });
             user.password = undefined;
 
             return res.json({ user, token })

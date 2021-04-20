@@ -11,5 +11,5 @@ module.exports = (req, res, next) => {
         throw error
     }
 
-    next()
+    next();
 }

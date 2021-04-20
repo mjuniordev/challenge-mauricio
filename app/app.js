@@ -10,6 +10,7 @@ const { LOG_START } = process.env;
 class App {
     constructor() {
         this.express = express();
+        // this.jwtAuthorization = null;
     }
 
     requireDirectory(path, execute) {
@@ -35,8 +36,11 @@ class App {
     }
     
     loadMiddlewares() {
+        // this.jwtAuthorization = require('./middlewares/authorization');
+
         this.express.use(cors())
         this.express.use(bodyParser.json())
+        // this.express.use(this.jwtAuthorization);
     }
 
     loadRoutes() {
