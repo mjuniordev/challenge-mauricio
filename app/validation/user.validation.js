@@ -21,5 +21,16 @@ module.exports = {
             .isLength({ min: 11, max: 11 }),
 
         requestValidation
+    ],
+
+    login: [
+        body('email')
+            .isEmail(),
+
+        body('password')
+            .isString()
+            .isLength({ min: 3 }),
+
+        requestValidation
     ]
 }

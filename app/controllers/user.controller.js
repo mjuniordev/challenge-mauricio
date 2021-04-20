@@ -31,6 +31,35 @@ class UserController extends AppController {
             throw new Error(error)
         }
     }
+
+    async login(req, res, next) {
+        try {
+            const { email, password } = req.body;
+
+            const user = await userService.findOne({ email }).select('+password')
+
+            if (!user) {
+                const error = new Error('Wrong credentials')
+                error.statusCode = 401
+                return next(error)
+            }
+
+            const validPassword = await user.validatePassword(password)
+
+            if (!validPassword) {
+                const error = new Error('Wrong credentials')
+                error.statusCode = 401
+                return next(error)
+            }
+
+            const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: 86400 });
+            user.password = undefined;
+
+            return res.json({ user, token })
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
 }
 
 module.exports = UserController;

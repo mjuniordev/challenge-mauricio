@@ -12,4 +12,10 @@ module.exports = scope => {
         userValidation.create,
         user.create
     )
+
+    app.post(
+        `${basePath}/login`,
+        userValidation.login,
+        user.login
+    )
 }
