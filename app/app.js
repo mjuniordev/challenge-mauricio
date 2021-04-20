@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs')
-const requireDir = require('require-dir');
 
+const errorHandler = require('./middlewares/errorHandler');
 const { color } = require('./constants');
 const { LOG_START } = process.env;
 
@@ -31,7 +31,7 @@ class App {
     }
 
     loadModels() {
-
+        this.requireDirectory('models')
     }
     
     loadMiddlewares() {
@@ -57,6 +57,8 @@ class App {
         this.loadRoutes()
         this.loadControllers()
         this.loadBootstraps()
+
+        this.express.use(errorHandler)
     }
 }
 

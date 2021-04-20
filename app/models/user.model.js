@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const Schema = mongoose.Schema;
 
@@ -43,9 +44,13 @@ UserSchema.methods.encryptPassword = async password => {
     return hash
 }
 
-UserSchema.pre('save', async function (next) {
+UserSchema.methods.validatePassword = function(password) {
+    return bcrypt.compare(password, this.password)
+}
+
+UserSchema.pre('save', async function(next) {
     this.password = await this.encryptPassword(this.password)
     next()
 })
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);
