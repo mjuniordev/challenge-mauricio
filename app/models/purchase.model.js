@@ -11,7 +11,8 @@ const PurchaseSchema = new Schema({
     },
     price: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
     },
     userCpf: {
         type: String,
@@ -23,6 +24,13 @@ const PurchaseSchema = new Schema({
     },
     cashbackValue: {
         type: Number,
+        min: 0,
+        default: 0
+    },
+    cashbackPercentage: {
+        type: Number,
+        min: 0,
+        max: 100,
         default: 0
     },
     createdAt: {
@@ -34,7 +42,28 @@ const PurchaseSchema = new Schema({
     }
 });
 
+PurchaseSchema.methods.calculateCB = ( price, cb ) => {
+    let cashback;
+
+    if (price <= 1000) {
+        cashback = 10; 
+    } else if (price > 1000 && price <= 1500) {
+        cashback = 15;
+    } else {
+        cashback = 20;
+    }
+    const total = price * (cashback /100)
+
+    if (cb) {
+        return cashback;
+    } else {
+        return total;
+    }
+}
+
 PurchaseSchema.pre('save', async function(next) {
+    this.cashbackValue = this.calculateCB(this.price)
+    this.cashbackPercentage = this.calculateCB(this.price, true);
     next();
 });
 
