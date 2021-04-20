@@ -10,6 +10,23 @@ module.exports = {
         body('price')
             .isNumeric(),
 
+        body('purchaseDate')
+            .isString(),
+
+        requestValidation
+    ],
+
+    update: [
+        body('code')
+            .isString()
+            .notEmpty(),
+
+        body('price')
+            .isNumeric(),
+
+        body('purchaseDate')
+            .isString(),
+
         requestValidation
     ]
 }

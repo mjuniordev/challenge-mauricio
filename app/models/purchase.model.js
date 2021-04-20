@@ -14,6 +14,10 @@ const PurchaseSchema = new Schema({
         required: true,
         min: 0
     },
+    purchaseDate: {
+        type: String,
+        required: true
+    },
     userCpf: {
         type: String,
         required: true
@@ -40,31 +44,6 @@ const PurchaseSchema = new Schema({
     updatedAt: {
         type: Date
     }
-});
-
-PurchaseSchema.methods.calculateCB = ( price, cb ) => {
-    let cashback;
-
-    if (price <= 1000) {
-        cashback = 10; 
-    } else if (price > 1000 && price <= 1500) {
-        cashback = 15;
-    } else {
-        cashback = 20;
-    }
-    const total = price * (cashback /100)
-
-    if (cb) {
-        return cashback;
-    } else {
-        return total;
-    }
-}
-
-PurchaseSchema.pre('save', async function(next) {
-    this.cashbackValue = this.calculateCB(this.price)
-    this.cashbackPercentage = this.calculateCB(this.price, true);
-    next();
 });
 
 module.exports = mongoose.model("Purchase", PurchaseSchema);

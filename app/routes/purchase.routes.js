@@ -14,4 +14,11 @@ module.exports = scope => {
         purchaseValidation.create,
         purchase.create
     )
+
+    app.put(
+        `${basePath}/update/:id`,
+        authorization,
+        purchaseValidation.update,
+        purchase.update
+    )
 }

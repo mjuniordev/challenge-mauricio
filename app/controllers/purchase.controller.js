@@ -10,20 +10,81 @@ class PurchaseController extends AppController {
         super(purchaseService)
 
         this.create = this.create.bind(this);
+        this.update = this.update.bind(this);
+        this._filterCashback = this._filterCashback.bind(this);
     }
 
-    async create(req, res, next) {
+    _filterCashback(price) {
+        let cashback;
+
+        if (price <= 1000) {
+            cashback = 10; 
+        } else if (price > 1000 && price <= 1500) {
+            cashback = 15;
+        } else {
+            cashback = 20;
+        }
+        const total = price * (cashback /100)
+
+        return { cashback, total };
+    }
+
+    async create(req, res) {
+        const { price } = req.body;
+
         try {
             if (req.userCpf === '15350946056' ) {
                 req.body.status = 'Aprovado';
             }
 
+            req.body.cashbackValue = (this._filterCashback(price)).total;
+            req.body.cashbackPercentage = (this._filterCashback(price)).cashback;
             req.body.userCpf = req.userCpf;
+
             const newPurchase = await purchaseService.insert(req.body);
 
             return res.json({ newPurchase });            
         } catch (error) {
             throw new Error(error)
+        }
+    }
+
+    async update(req, res, next) {
+        const _id = req.params.id
+        const { body } = req
+
+        try {
+            const purchase = await purchaseService.findOne({ _id });
+
+            if (purchase.status === 'Aprovado') {
+                const error = new Error('No permission to edit this purchase. APPROVED status');
+                error.statusCode = 404;
+                return next(error);
+            }
+
+            if (purchase.userCpf !== req.userCpf) {
+                const error = new Error('No permission to edit this purchase');
+                error.statusCode = 404;
+                return next(error);
+            }
+
+            body.cashbackValue = (this._filterCashback(body.price)).total;
+            body.cashbackPercentage = (this._filterCashback(body.price)).cashback;
+            body.updatedAt = new Date();
+
+            const updatePurchase = await purchaseService.update({ _id }, body)
+
+            if (updatePurchase.ok !== 1) {
+                const error = new Error('There was an error when trying to update');
+                error.statusCode = 404;
+                return next(error);
+            }
+
+            const updatedPurchase = await purchaseService.findOne({ _id });
+
+            res.json({ updatedPurchase });
+        } catch (error) {
+            throw new Error(error);
         }
     }
 }
