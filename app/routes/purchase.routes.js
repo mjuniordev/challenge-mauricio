@@ -21,4 +21,16 @@ module.exports = scope => {
         purchaseValidation.update,
         purchase.update
     )
+
+    app.delete(
+        `${basePath}/delete/:id`,
+        authorization,
+        purchase.delete  
+    )
+
+    app.get(
+        `${basePath}/show`,
+        authorization,
+        purchase.show
+    )
 }

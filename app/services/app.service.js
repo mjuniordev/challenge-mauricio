@@ -16,6 +16,18 @@ class AppService {
     update(_id, data) {
         return this.Model.update({ _id }, data)
     }
+
+    remove(_id) {
+        return this.Model.deleteOne({ _id })
+    }
+
+    find(params = {}, fields = {}, sort, skip, limit) {
+        console.log(params)
+        return this.Model.find(params, fields)
+          .sort(sort)
+          .skip(skip)
+          .limit(limit)
+    }
 }
 
 module.exports = AppService;
