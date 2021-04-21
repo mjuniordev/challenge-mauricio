@@ -28,6 +28,10 @@ class AppService {
           .skip(skip)
           .limit(limit)
     }
+
+    count(query = {}) {
+        return this.Model.countDocuments(query)
+    }
 }
 
 module.exports = AppService;

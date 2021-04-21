@@ -52,7 +52,7 @@ class App {
     }
 
     loadBootstraps() {
-
+        this.requireDirectory('bootstraps')
     }
 
     start() {
