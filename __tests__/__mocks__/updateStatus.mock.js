@@ -1,3 +1,4 @@
 module.exports = {
-    nModified: 1
+    nModified: 1,
+    ok: 1
 }

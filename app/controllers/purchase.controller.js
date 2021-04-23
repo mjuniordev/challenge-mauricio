@@ -12,7 +12,7 @@ class PurchaseController extends AppController {
         this.delete = this.delete.bind(this);
     }
 
-    async create(req, res) {
+    async create(req, res, next) {
         const { price } = req.body;
 
         try {
@@ -28,7 +28,7 @@ class PurchaseController extends AppController {
 
             return res.json({ newPurchase });            
         } catch (error) {
-            throw new Error(error)
+            return next(error)
         }
     }
 
@@ -67,7 +67,7 @@ class PurchaseController extends AppController {
 
             res.json({ updatedPurchase });
         } catch (error) {
-            throw new Error(error);
+            return next(error);
         }
     }
 

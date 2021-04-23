@@ -3,9 +3,9 @@ module.exports = {
         params: {},
         query: {},
         body: {
-            price: '1500'
+            price: '1000'
         },
-        userCpf: '11111111111'
+		userCpf: '15350946056'
     },
     res: {
         send: jest.fn(),
