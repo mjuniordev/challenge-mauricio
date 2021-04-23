@@ -16,20 +16,25 @@ class UserController extends AppController {
     async create(req, res, next) {
         try {
             const { name, cpf, email, password } = req.body;
-            const user = await userService.findOne({ $or:[{ email }, { cpf }] }).select('+password');
 
+            const user = await userService.findOne({ $or:[{ email }, { cpf }] }).select('+password');
             if (user) {
                 const error = new Error('Credentials already exists');
-                error.statusCode = 401;
+                error.statusCode = 404;
                 return next(error);
             }
 
             const newUser = await userService.insert({ name, cpf, email, password });
+            if (!newUser) {
+                const error = new Error('Credentials already exists');
+                error.statusCode = 404;
+                return next(error);
+            }
+            
             newUser.password = undefined;
-    
             return res.json({ newUser });
         } catch (error) {
-            throw new Error(error)
+            return next(error)
         }
     }
 
@@ -58,7 +63,7 @@ class UserController extends AppController {
 
             return res.json({ user, token })
         } catch (error) {
-            throw new Error(error)
+            return next(error)
         }
     }
 }
