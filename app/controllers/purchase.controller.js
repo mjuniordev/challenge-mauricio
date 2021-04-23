@@ -33,10 +33,10 @@ class PurchaseController extends AppController {
     }
 
     async update(req, res, next) {
-        const _id = req.params.id
         const { body } = req
 
         try {
+            const _id = req.params.id
             const purchase = await purchaseService.findOne({ _id });
 
             if (purchase.status === 'Aprovado') {
@@ -97,9 +97,9 @@ class PurchaseController extends AppController {
                 return next(error);
             }
 
-            res.send({ Message: `Purchased with id ${_id} successfully removed.` });
+            res.send({ message: `Purchased with id ${_id} successfully removed.`, statusCode: 200 });
         } catch (error) {
-            throw new Error(error);
+            return next(error);
         }
     }
 

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619206305419" clover="3.2.0">
-  <project timestamp="1619206305419" name="All files">
-    <metrics statements="134" coveredstatements="93" conditionals="32" coveredconditionals="19" methods="19" coveredmethods="11" elements="185" coveredelements="123" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
+<coverage generated="1619215452666" clover="3.2.0">
+  <project timestamp="1619215452666" name="All files">
+    <metrics statements="134" coveredstatements="121" conditionals="32" coveredconditionals="28" methods="19" coveredmethods="12" elements="185" coveredelements="161" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
     <package name="controllers">
-      <metrics statements="114" coveredstatements="81" conditionals="28" coveredconditionals="19" methods="10" coveredmethods="8"/>
+      <metrics statements="114" coveredstatements="109" conditionals="28" coveredconditionals="28" methods="10" coveredmethods="9"/>
       <file name="app.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/app.controller.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="17" type="stmt"/>
+        <line num="3" count="26" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
       </file>
       <file name="purchase.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/purchase.controller.js">
-        <metrics statements="72" coveredstatements="39" conditionals="20" coveredconditionals="11" methods="6" coveredmethods="4"/>
+        <metrics statements="72" coveredstatements="67" conditionals="20" coveredconditionals="20" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="9" count="8" type="stmt"/>
-        <line num="10" count="8" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
-        <line num="12" count="8" type="stmt"/>
+        <line num="7" count="17" type="stmt"/>
+        <line num="9" count="17" type="stmt"/>
+        <line num="10" count="17" type="stmt"/>
+        <line num="11" count="17" type="stmt"/>
+        <line num="12" count="17" type="stmt"/>
         <line num="16" count="6" type="stmt"/>
         <line num="18" count="6" type="stmt"/>
         <line num="19" count="6" type="cond" truecount="2" falsecount="0"/>
@@ -29,59 +29,59 @@
         <line num="27" count="6" type="stmt"/>
         <line num="29" count="5" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="42" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="48" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="60" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="42" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="60" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="68" count="1" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="80" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="87" count="0" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="94" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="95" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="100" count="0" type="stmt"/>
-        <line num="102" count="0" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="75" count="5" type="stmt"/>
+        <line num="77" count="5" type="stmt"/>
+        <line num="78" count="5" type="stmt"/>
+        <line num="80" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="83" count="1" type="stmt"/>
+        <line num="86" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+        <line num="94" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
         <line num="107" count="0" type="stmt"/>
         <line num="109" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
         <line num="114" count="0" type="stmt"/>
-        <line num="121" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="121" count="16" type="cond" truecount="2" falsecount="0"/>
         <line num="122" count="4" type="stmt"/>
-        <line num="123" count="10" type="cond" truecount="4" falsecount="0"/>
-        <line num="124" count="8" type="stmt"/>
+        <line num="123" count="12" type="cond" truecount="4" falsecount="0"/>
+        <line num="124" count="10" type="stmt"/>
         <line num="126" count="2" type="stmt"/>
-        <line num="128" count="14" type="stmt"/>
-        <line num="130" count="14" type="stmt"/>
+        <line num="128" count="16" type="stmt"/>
+        <line num="130" count="16" type="stmt"/>
         <line num="134" count="1" type="stmt"/>
       </file>
       <file name="user.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/user.controller.js">
