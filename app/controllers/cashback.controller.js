@@ -12,9 +12,9 @@ class CashbackController {
         try {
             const response = await boticarioService.getCashback(cpf);
 
-            return res.json({ response });
+            return res.json(response);
         } catch (error) {
-            throw new Error(error);
+            return next(error);
         }
     }
 }

@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619233503746" clover="3.2.0">
-  <project timestamp="1619233503747" name="All files">
-    <metrics statements="134" coveredstatements="134" conditionals="32" coveredconditionals="28" methods="20" coveredmethods="20" elements="186" coveredelements="182" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
+<coverage generated="1619261994093" clover="3.2.0">
+  <project timestamp="1619261994094" name="All files">
+    <metrics statements="152" coveredstatements="152" conditionals="34" coveredconditionals="30" methods="23" coveredmethods="23" elements="209" coveredelements="205" complexity="0" loc="152" ncloc="152" packages="2" files="8" classes="8"/>
     <package name="controllers">
-      <metrics statements="114" coveredstatements="114" conditionals="28" coveredconditionals="28" methods="10" coveredmethods="10"/>
+      <metrics statements="122" coveredstatements="122" conditionals="28" coveredconditionals="28" methods="12" coveredmethods="12"/>
       <file name="app.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/app.controller.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="28" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
+      </file>
+      <file name="cashback.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/cashback.controller.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
       <file name="purchase.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/purchase.controller.js">
         <metrics statements="72" coveredstatements="72" conditionals="20" coveredconditionals="20" methods="6" coveredmethods="6"/>
@@ -129,7 +140,7 @@
       </file>
     </package>
     <package name="services">
-      <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="10"/>
+      <metrics statements="30" coveredstatements="30" conditionals="6" coveredconditionals="2" methods="11" coveredmethods="11"/>
       <file name="app.service.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/services/app.service.js">
         <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="8"/>
         <line num="3" count="28" type="stmt"/>
@@ -142,6 +153,19 @@
         <line num="33" count="2" type="stmt"/>
         <line num="37" count="4" type="stmt"/>
         <line num="41" count="4" type="stmt"/>
+      </file>
+      <file name="boticario.service.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/services/boticario.service.js">
+        <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
       </file>
       <file name="purchase.service.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/services/purchase.service.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
