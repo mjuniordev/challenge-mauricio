@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619231695956" clover="3.2.0">
-  <project timestamp="1619231695956" name="All files">
-    <metrics statements="134" coveredstatements="126" conditionals="32" coveredconditionals="28" methods="19" coveredmethods="13" elements="185" coveredelements="167" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
+<coverage generated="1619233503746" clover="3.2.0">
+  <project timestamp="1619233503747" name="All files">
+    <metrics statements="134" coveredstatements="134" conditionals="32" coveredconditionals="28" methods="20" coveredmethods="20" elements="186" coveredelements="182" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
     <package name="controllers">
       <metrics statements="114" coveredstatements="114" conditionals="28" coveredconditionals="28" methods="10" coveredmethods="10"/>
       <file name="app.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/app.controller.js">
@@ -129,35 +129,35 @@
       </file>
     </package>
     <package name="services">
-      <metrics statements="20" coveredstatements="12" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="3"/>
+      <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="10"/>
       <file name="app.service.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/services/app.service.js">
-        <metrics statements="10" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="1"/>
-        <line num="3" count="4" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
+        <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="8"/>
+        <line num="3" count="28" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
       </file>
       <file name="purchase.service.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/services/purchase.service.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="6" count="13" type="stmt"/>
+        <line num="8" count="13" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
       </file>
       <file name="user.service.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/services/user.service.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="6" count="15" type="stmt"/>
+        <line num="8" count="15" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
       </file>
     </package>
   </project>
