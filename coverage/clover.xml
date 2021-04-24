@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1619215452666" clover="3.2.0">
-  <project timestamp="1619215452666" name="All files">
-    <metrics statements="134" coveredstatements="121" conditionals="32" coveredconditionals="28" methods="19" coveredmethods="12" elements="185" coveredelements="161" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
+<coverage generated="1619231695956" clover="3.2.0">
+  <project timestamp="1619231695956" name="All files">
+    <metrics statements="134" coveredstatements="126" conditionals="32" coveredconditionals="28" methods="19" coveredmethods="13" elements="185" coveredelements="167" complexity="0" loc="134" ncloc="134" packages="2" files="6" classes="6"/>
     <package name="controllers">
-      <metrics statements="114" coveredstatements="109" conditionals="28" coveredconditionals="28" methods="10" coveredmethods="9"/>
+      <metrics statements="114" coveredstatements="114" conditionals="28" coveredconditionals="28" methods="10" coveredmethods="10"/>
       <file name="app.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/app.controller.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="26" type="stmt"/>
+        <line num="3" count="28" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
       </file>
       <file name="purchase.controller.js" path="/Users/mjunior/Projetos/challenge-mauricio/app/controllers/purchase.controller.js">
-        <metrics statements="72" coveredstatements="67" conditionals="20" coveredconditionals="20" methods="6" coveredmethods="5"/>
+        <metrics statements="72" coveredstatements="72" conditionals="20" coveredconditionals="20" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="7" count="17" type="stmt"/>
-        <line num="9" count="17" type="stmt"/>
-        <line num="10" count="17" type="stmt"/>
-        <line num="11" count="17" type="stmt"/>
-        <line num="12" count="17" type="stmt"/>
+        <line num="7" count="19" type="stmt"/>
+        <line num="9" count="19" type="stmt"/>
+        <line num="10" count="19" type="stmt"/>
+        <line num="11" count="19" type="stmt"/>
+        <line num="12" count="19" type="stmt"/>
         <line num="16" count="6" type="stmt"/>
         <line num="18" count="6" type="stmt"/>
         <line num="19" count="6" type="cond" truecount="2" falsecount="0"/>
@@ -70,11 +70,11 @@
         <line num="97" count="1" type="stmt"/>
         <line num="100" count="1" type="stmt"/>
         <line num="102" count="1" type="stmt"/>
-        <line num="107" count="0" type="stmt"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="110" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
-        <line num="114" count="0" type="stmt"/>
+        <line num="107" count="2" type="stmt"/>
+        <line num="109" count="2" type="stmt"/>
+        <line num="110" count="2" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
+        <line num="114" count="1" type="stmt"/>
         <line num="121" count="16" type="cond" truecount="2" falsecount="0"/>
         <line num="122" count="4" type="stmt"/>
         <line num="123" count="12" type="cond" truecount="4" falsecount="0"/>
