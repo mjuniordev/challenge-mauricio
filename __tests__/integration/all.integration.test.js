@@ -10,7 +10,7 @@ const PurchaseCreate = require('../__mocks__/purchaseCreate.mock.json')
 const request = require('supertest')
 const jwt = require('jsonwebtoken')
 
-let Model, ModelPurchase, idValidation, idApproved;
+let Model, idValidation, idApproved;
 
 const init = () => {
     return mongo.connect()
@@ -21,7 +21,6 @@ const init = () => {
             app.start()
 
             Model = require('mongoose').model('User')
-            ModelPurchase = require('mongoose').model('Purchase')
 
             return express.listen(PORT, () => console.log(color.GREEN, `\nAPP RUNNING ON PORT ${PORT}`))
         })
@@ -40,14 +39,10 @@ describe('All Integrations', () => {
 
     beforeAll(async () => {
         await init()
-        // await wipe()
-        // wipeCreate()
     })
 
     afterAll(async () => {
         await wipe()
-        // wipeCreate()
-        // app.close()
     })
 
     describe('[POST] /user/create', () => {
@@ -259,6 +254,92 @@ describe('All Integrations', () => {
     })
 
     describe('[DELETE] /purchase/delete/:id', () => {
-        test();
+        test('should not validate the Authorization Middleware', async done => {
+            const generateToken = undefined;
+            Authorization = `Bearer ${generateToken}`;
+            const errorToken = 'Without authorization token'
+
+            const { body } = await request(app.express)
+                .delete(`/purchase/delete/${idValidation}`)
+                .set('Authorization', Authorization)
+                .send({ code: PurchaseCreate.code, price: PurchaseCreate.price, purchaseDate: PurchaseCreate.purchaseDate, password: UserCreate.password })
+
+            expect(body.message).toBe(errorToken);
+            done()
+        });
+
+        test('should validated', async done => {
+            const generateToken = jwt.sign({cpf: '11111111113'}, process.env.JWT_SECRET, { expiresIn: 86400 });
+            Authorization = `Bearer ${generateToken}`;
+            const sucessMessage = `Purchased with id ${idValidation} successfully removed.`
+            
+            const { body } = await request(app.express)
+                .delete(`/purchase/delete/${idValidation}`)
+                .set('Authorization', Authorization)
+                .send({ code: PurchaseCreate.code, price: PurchaseCreate.price, purchaseDate: PurchaseCreate.purchaseDate, password: UserCreate.password })
+
+            expect(body.message).toBe(sucessMessage)
+            expect(body.statusCode).toBe(200)
+            done()
+        });
+
+        test('should not validated on try delete with a approved status', async done => {
+            const generateToken = jwt.sign({cpf: '11111111113'}, process.env.JWT_SECRET, { expiresIn: 86400 });
+            Authorization = `Bearer ${generateToken}`;
+            const errorMessage = `No permission to remove this purchase. APPROVED status`
+            
+            const { body } = await request(app.express)
+                .delete(`/purchase/delete/${idApproved}`)
+                .set('Authorization', Authorization)
+                .send({ code: PurchaseCreate.code, price: PurchaseCreate.price, purchaseDate: PurchaseCreate.purchaseDate, password: UserCreate.password })
+
+            expect(body.message).toBe(errorMessage)
+            done()
+        });
+
+        test('should not validated on try delete a record without id', async done => {
+            const generateToken = jwt.sign({cpf: '11111111113'}, process.env.JWT_SECRET, { expiresIn: 86400 });
+            Authorization = `Bearer ${generateToken}`;
+            const errorMessage = `This purchase does not exist`
+            
+            const { body } = await request(app.express)
+                .delete(`/purchase/delete/123456789012345678901234`)
+                .set('Authorization', Authorization)
+                .send({ code: PurchaseCreate.code, price: PurchaseCreate.price, purchaseDate: PurchaseCreate.purchaseDate, password: UserCreate.password })
+
+            expect(body.message).toBe(errorMessage)
+            done()
+        });
+    });
+
+    describe('[GET] /purchase/show', () => {
+        test('should return all records', async done => {
+            const generateToken = jwt.sign({cpf: '11111111113'}, process.env.JWT_SECRET, { expiresIn: 86400 });
+            Authorization = `Bearer ${generateToken}`;
+
+            const { body } = await request(app.express)
+                .get('/purchase/show')
+                .set('Authorization', Authorization)
+                .send({})
+
+            expect(body.length).toBeGreaterThan(1)
+            done()
+        });
+    });
+
+    describe('[GET] /cashback/:cpf', () => {
+        test('should return data from api', async done => {
+            const generateToken = jwt.sign({cpf: '11111111113'}, process.env.JWT_SECRET, { expiresIn: 86400 });
+            Authorization = `Bearer ${generateToken}`;
+            const cpfBoticario = '12312312323'
+
+            const { body } = await request(app.express)
+                .get(`/cashback/${cpfBoticario}`)
+                .set('Authorization', Authorization)
+                .send({})
+
+            expect(body.body.credit).toBeGreaterThan(1)
+            done()
+        });
     });
 })
