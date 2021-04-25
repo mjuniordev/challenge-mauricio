@@ -9,8 +9,8 @@ const run = async () => {
   try {
     const hasUser = await userService.count({ email: user.email })
 
-    if (!hasUser)
-      userService.insert(user)
+    if (hasUser < 1)
+      await userService.insert(user)
   } catch (error) {
     console.log(color.RED, error)
   }

@@ -10,8 +10,7 @@
     "test": "NODE_ENV=test jest --coverage --setupFiles ./dotenv/config",
     "test:coverage": "NODE_ENV=test jest --coverage --setupFiles ./dotenv/config",
     "test:debug": "NODE_ENV=test node inspect -r ./dotenv/config node_modules/.bin/jest --runInBand ./__tests__",
-    "test:integration": "NODE_ENV=test jest __tests__/integration/ --runInBand --coverage --setupFiles ./dotenv/config",
-    "test:unit": "NODE_ENV=test jest __tests__/unit/ --runInBand --coverage --setupFiles ./dotenv/config"
+    "test:integration": "NODE_ENV=test jest __tests__/integration/ --runInBand --coverage --setupFiles ./dotenv/config"
   },
   "keywords": [],
   "author": "",

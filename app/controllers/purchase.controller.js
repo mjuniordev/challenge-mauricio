@@ -20,8 +20,10 @@ class PurchaseController extends AppController {
                 req.body.status = 'Aprovado';
             }
 
-            req.body.cashbackValue = (this._filterCashback(price)).total;
-            req.body.cashbackPercentage = (this._filterCashback(price)).cashback;
+            const calculate = this._filterCashback(price);
+            
+            req.body.cashbackValue = calculate.total;
+            req.body.cashbackPercentage = calculate.cashback;
             req.body.userCpf = req.userCpf;
 
             const newPurchase = await purchaseService.insert(req.body);
@@ -51,8 +53,10 @@ class PurchaseController extends AppController {
                 return next(error);
             }
 
-            body.cashbackValue = (this._filterCashback(body.price)).total;
-            body.cashbackPercentage = (this._filterCashback(body.price)).cashback;
+            const calculate = this._filterCashback(body.price);
+
+            body.cashbackValue = calculate.total;
+            body.cashbackPercentage = calculate.cashback;
             body.updatedAt = new Date();
 
             const updatePurchase = await purchaseService.update({ _id }, body)
