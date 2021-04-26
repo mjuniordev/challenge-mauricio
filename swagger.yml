@@ -1,0 +1,407 @@
+openapi: '3.0.2'
+
+info:
+  title: DESAFIO MAURÍCIO
+  version: '1.0'
+
+servers:
+  - url: http://localhost:8080
+
+
+tags:
+
+- name: "user"
+  description: "BasePath para gerenciamento dos revendedores"
+  
+- name: "purchase"
+  description: "BasePath para gerencimanto das compras realizadas"
+
+- name: "cashback"
+  description: "BasePath para gerencimanto dos cashbacks acumulados"
+  
+  
+components:
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+  security:
+    - bearerAuth: []
+
+  schemas:
+  
+    UserCreateResponse:
+      properties:
+        newUser:
+          $ref: '#/components/schemas/UserCreateDocument'
+          
+    UserCreateDocument:
+      properties:
+        active:
+          type: boolean
+          example: true
+        _id:
+          type: string
+          example: '111111111111111111111111'
+        name:
+          type: string
+          example: 'User Name'
+        cpf:
+          type: string
+          example: '11111111111'
+        email:
+          type: string
+          example: 'user@email.com'
+        createdAt:
+          type: string
+          format: date
+          example: '2021-04-17T00:59:57.994Z'
+  
+  
+    LoginResponse:
+      properties:
+        user:
+          $ref: '#/components/schemas/UserDocument'
+        token:
+          $ref: '#/components/schemas/Token'
+          
+    UserDocument:
+      properties:
+        active:
+          type: boolean
+          example: true
+        _id:
+          type: string
+          example: '111111111111111111111111'
+        name:
+          type: string
+          example: 'User Name'
+        cpf:
+          type: string
+          example: '11111111111'
+        email:
+          type: string
+          example: 'user@email.com'
+        createdAt:
+          type: string
+          format: date
+          example: '2021-04-17T00:59:57.994Z'
+          
+          
+    PurchaseCreateResponse:
+      properties:
+        newPurchase:
+          $ref: '#/components/schemas/PurchaseCreateDocument'
+          
+    PurchaseCreateDocument:
+      properties:
+        status:
+          type: string
+          example: 'Em validacao'
+        cashbackValue:
+          type: number
+          example: 100
+        cashbackPercentage:
+          type: number
+          example: 10
+        _id:
+          type: string
+          example: '11111111111'
+        code:
+          type: string
+          example: '00005'
+        price:
+          type: number
+          example: 1000
+        purchaseDate:
+          type: string
+          example: '20/04/2021'
+        userCpf:
+          type: string
+          example: '11111111111'
+        createdAt:
+          type: string
+          format: date
+          example: '2021-04-17T00:59:57.994Z'
+          
+          
+    PurchaseUpdateResponse:
+      properties:
+        updatedPurchase:
+          $ref: '#/components/schemas/PurchaseUpdateDocument'
+          
+    PurchaseUpdateDocument:
+      properties:
+        status:
+          type: string
+          example: 'Em validacao'
+        cashbackValue:
+          type: number
+          example: 100
+        cashbackPercentage:
+          type: number
+          example: 10
+        _id:
+          type: string
+          example: '11111111111'
+        code:
+          type: string
+          example: '00005'
+        price:
+          type: number
+          example: 1000
+        purchaseDate:
+          type: string
+          example: '20/04/2021'
+        userCpf:
+          type: string
+          example: '11111111111'
+        createdAt:
+          type: string
+          format: date
+          example: '2021-04-17T00:59:57.994Z'
+        updatedAt:
+          type: string
+          format: date
+          example: '2021-04-24T22:23:31.414Z'  
+          
+          
+    RemoveStatus:
+      properties:
+        message:
+          type: string
+          example: 'Purchased with id 11111111111 successfully removed.'
+
+    
+
+
+    CashbackResponse:
+      properties:
+        statusCode:
+          $ref: '#/components/schemas/statusCode'
+        body:
+          $ref: '#/components/schemas/CashbackDocument'
+          
+    CashbackDocument:
+      properties:
+        credit:
+          type: number
+          example: '4168'
+
+    statusCode:
+      type: number
+      example: 200
+
+
+    ArrayOfPurchases:
+      type: array
+      items:
+        type: object
+        $ref: '#/components/schemas/PurchaseUpdateDocument'      
+          
+          
+    Token:
+      type: string      
+
+
+paths:
+
+  /user/create:
+    post:
+      tags:
+        - "user"
+      summary: "..."
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Maurício Junior
+                cpf:
+                  type: string
+                  example: '11122233344'
+                email:
+                  type: string
+                  example: teste@teste.com
+                password:
+                  type: string
+                  example: 123456
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreateResponse'
+  
+  
+  /user/login:
+    post:
+      tags:
+        - "user"
+      summary: "..."
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: teste@teste.com
+                password:
+                  type: string
+                  example: 123456
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+                
+                
+  /purchase/create:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - "purchase"
+      summary: "..."
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  example: 00005
+                price:
+                  type: string
+                  example: 1000
+                purchaseDate:
+                  type: string
+                  example: 20/04/2021
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseCreateResponse'
+                
+                
+  /purchase/{id}:
+    put:
+      security:
+          - bearerAuth: []
+      tags:
+        - "purchase"
+      summary: "..."
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ""
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  example: 00005
+                price:
+                  type: string
+                  example: 1000
+                purchaseDate:
+                  type: string
+                  example: 20/04/2021
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseUpdateResponse'
+                
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - "purchase"
+      summary: "..."
+      description: ""
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ""
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveStatus'
+                
+                
+  /purchase:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - "purchase"
+      summary: "..."
+      description: ""
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfPurchases'
+
+
+  /cashback/{cpf}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - "cashback"
+      summary: "..."
+      description: ""
+      parameters:
+        - in: path
+          name: cpf
+          schema:
+            type: string
+          required: true
+          description: ""
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashbackResponse'
