@@ -64,8 +64,9 @@ Authorization: *token* (Token do Login)
 
 - **Body exemplo:**  
 {    
-	"email": "superusuario2@teste.com",  
-	"password": "123456"    
+	"code": "00005",  
+	"price": "1000",  
+	"purchaseDate": "20/04/2021"  
 }
 
 # PUT: Atualizar compra cadastrada
@@ -77,8 +78,9 @@ id: _id da compra cadastrada
 
 - **Body exemplo:**  
 {    
-	"email": "superusuario2@teste.com",  
-	"password": "123456"    
+	"code": "00005",  
+	"price": "1000",  
+	"purchaseDate": "20/04/2021"  
 }
 
 # DELETE: Deletar compra cadastrada
