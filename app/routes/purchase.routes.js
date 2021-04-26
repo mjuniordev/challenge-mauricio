@@ -16,20 +16,20 @@ module.exports = scope => {
     )
 
     app.put(
-        `${basePath}/update/:id`,
+        `${basePath}/:id`,
         authorization,
         purchaseValidation.update,
         purchase.update
     )
 
     app.delete(
-        `${basePath}/delete/:id`,
+        `${basePath}/:id`,
         authorization,
         purchase.delete  
     )
 
     app.get(
-        `${basePath}/show`,
+        `${basePath}/`,
         authorization,
         purchase.show
     )

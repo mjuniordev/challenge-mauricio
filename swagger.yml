@@ -15,6 +15,9 @@ tags:
   
 - name: "purchase"
   description: "BasePath para gerencimanto das compras realizadas"
+
+- name: "cashback"
+  description: "BasePath para gerencimanto dos cashbacks acumulados"
   
   
 components:
@@ -25,6 +28,8 @@ components:
       scheme: bearer
       bearerFormat: JWT
       
+  security:
+    - bearerAuth: []
 
   schemas:
   
@@ -168,8 +173,29 @@ components:
       properties:
         message:
           type: string
-          example: 'Purchased with id 11111111111 successfully removed.'      
+          example: 'Purchased with id 11111111111 successfully removed.'
+
+    
+
+
+    CashbackResponse:
+      properties:
+        statusCode:
+          $ref: '#/components/schemas/statusCode'
+        body:
+          $ref: '#/components/schemas/CashbackDocument'
           
+    CashbackDocument:
+      properties:
+        credit:
+          type: number
+          example: '4168'
+
+    statusCode:
+      type: number
+      example: 200
+
+
     ArrayOfPurchases:
       type: array
       items:
@@ -188,27 +214,26 @@ paths:
       tags:
         - "user"
       summary: "..."
-      description: ""
-      parameters:
-        - in: body
-          name: Create user form
-          description: Parâmetros necessários para criação de usuário.
-          schema:
-            type: object
-            required:
-              - name
-              - cpf
-              - email
-              - password
-            properties:
-              name:
-                type: string
-              cpf:
-                type: string
-              email:
-                type: string
-              password:
-                type: string
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Maurício Junior
+                cpf:
+                  type: string
+                  example: '11122233344'
+                email:
+                  type: string
+                  example: teste@teste.com
+                password:
+                  type: string
+                  example: 123456
       responses:
         '200':
           description: OK
@@ -223,21 +248,20 @@ paths:
       tags:
         - "user"
       summary: "..."
-      description: ""
-      parameters:
-        - in: body
-          name: Login form
-          description: Parâmetros necessários para efetuar o login do usuário.
-          schema:
-            type: object
-            required:
-              - email
-              - password
-            properties:
-              email:
-                type: string
-              password:
-                type: string
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: teste@teste.com
+                password:
+                  type: string
+                  example: 123456
       responses:
         '200':
           description: OK
@@ -249,27 +273,28 @@ paths:
                 
   /purchase/create:
     post:
+      security:
+        - bearerAuth: []
       tags:
         - "purchase"
       summary: "..."
-      description: ""
-      parameters:
-        - in: body
-          name: Create user form
-          description: Parâmetros necessários para cadastrar uma nova compra.
-          schema:
-            type: object
-            required:
-              - code
-              - price
-              - purchaseDate
-            properties:
-              code:
-                type: string
-              price:
-                type: string
-              purchaseDate:
-                type: string
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  example: 00005
+                price:
+                  type: string
+                  example: 1000
+                purchaseDate:
+                  type: string
+                  example: 20/04/2021
       responses:
         '200':
           description: OK
@@ -279,12 +304,13 @@ paths:
                 $ref: '#/components/schemas/PurchaseCreateResponse'
                 
                 
-  /purchase/update/{id}:
+  /purchase/{id}:
     put:
+      security:
+          - bearerAuth: []
       tags:
         - "purchase"
       summary: "..."
-      description: ""
       parameters:
         - in: path
           name: id
@@ -292,18 +318,23 @@ paths:
             type: string
           required: true
           description: ""
-        - in: body
-          name: ""
-          description: ""
-          schema:
-            type: object
-            properties:
-              code:
-                type: string
-              price:
-                type: string
-              purchaseDate:
-                type: string
+      requestBody:
+        description: "..."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  example: 00005
+                price:
+                  type: string
+                  example: 1000
+                purchaseDate:
+                  type: string
+                  example: 20/04/2021
       responses:
         '200':
           description: OK
@@ -312,9 +343,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/PurchaseUpdateResponse'
                 
-                
-  /purchase/delete/{id}:
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - "purchase"
       summary: "..."
@@ -335,8 +366,10 @@ paths:
                 $ref: '#/components/schemas/RemoveStatus'
                 
                 
-  /purchase/show:
+  /purchase:
     get:
+      security:
+        - bearerAuth: []
       tags:
         - "purchase"
       summary: "..."
@@ -348,3 +381,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArrayOfPurchases'
+
+
+  /cashback/{cpf}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - "cashback"
+      summary: "..."
+      description: ""
+      parameters:
+        - in: path
+          name: cpf
+          schema:
+            type: string
+          required: true
+          description: ""
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashbackResponse'
