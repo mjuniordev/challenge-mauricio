@@ -3,6 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs')
 
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yml');
+
 const errorHandler = require('./middlewares/errorHandler');
 const { color } = require('./constants');
 const { LOG_START } = process.env;
@@ -63,6 +67,7 @@ class App {
         this.loadBootstraps()
 
         this.express.use(errorHandler)
+        this.express.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     }
 }
 
