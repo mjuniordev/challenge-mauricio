@@ -5,7 +5,7 @@
 
 - Os arquivos **.env** da API **não** foram adicionados ao arquivo **.gitignore** para melhor entendimento da arquitetura
 
-- A API utiliza **JWT** para o gerenciamento de autenticação 
+- A API utiliza **JWT** para o gerenciamento de autenticação e criação de sessão do usuário com duração de 24 horas
 
 - API possui uma rota com o **Swagger** para facilitar os testes diretos aos endpoints
 
