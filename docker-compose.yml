@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    depends_on: 
+      - mongodb
+    environment: 
+      NODE_ENV: "dev"
+      PORT: "8080"
+      MONGO_URI: mongodb://mongodb:27017/boticario_dev
+      LOG_START: "true"
+      JWT_SECRET: "shhhh"
+      BOTICARIO_HOST: "https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com/v1"
+      BOTICARIO_TOKEN: "ZXPURQOARHiMc6Y0flhRC1LVlZQVFRnm"
+    ports:
+      - "8080:8080"
+
+  mongodb:
+    image: mongo:4.2
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
