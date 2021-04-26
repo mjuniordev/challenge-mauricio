@@ -9,7 +9,7 @@
 
 - API possui uma rota com o **Swagger** para facilitar os testes diretos aos endpoints
 
-+ **Importante:** Com excessão da rota de Criação de usuário, todas as outras rotas que precisam que o CPF seja passado no Body da requisição irão busca-lo automaticamente na sessão criada ao efetuar login, fazendo assim com que a necessidade de passar este parâmetro não seja nao necessária. 
++ **Importante:** Com exceção da rota de Criação de usuário, todas as outras rotas que precisam que o CPF seja passado no Body da requisição irão busca-lo automaticamente na sessão criada ao efetuar login, fazendo assim com que a necessidade de passar este parâmetro não seja nao necessária. 
 
 # Instalação
 * **npm install**
